@@ -203,14 +203,16 @@ export default function PerfumeSuggester() {
         </div>
       </div>
 
-      <Button
-        type="submit"
-        className="w-full"
-        disabled={isLoading || (!input && !files)}
-      >
-        <Sparkles className="mr-2 h-4 w-4" />
-        {isLoading ? "Crafting suggestions..." : "Suggest Ingredients"}
-      </Button>
+      <div className="flex justify-center">
+        <Button
+          type="submit"
+          className="px-8"
+          disabled={isLoading || (!input && !files)}
+        >
+          <Sparkles className="mr-2 h-4 w-4" />
+          {isLoading ? "Crafting suggestions..." : "Suggest Ingredients"}
+        </Button>
+      </div>
     </form>
   );
 }

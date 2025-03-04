@@ -13,13 +13,13 @@ interface UserInput {
 }
 
 interface BottleDesign {
-  choice: number;
+  choice: string;
   text: string;
 }
 
 interface PerfumeSuggestion {
-  note: "top" | "middle" | "base",
-  ingredients: Ingredient[]
+  note: "top" | "middle" | "base";
+  ingredients: Ingredient[];
 }
 
 interface PerfumeState {
@@ -41,7 +41,7 @@ interface PerfumeState {
 const initialState = {
   userInput: { text: "", image: "" },
   suggestedIngredients: [],
-  bottleDesign: { choice: 0, text: "" },
+  bottleDesign: { choice: "", text: "" },
 };
 
 export const useStore = create<PerfumeState>()(
@@ -53,7 +53,7 @@ export const useStore = create<PerfumeState>()(
       suggestedIngredients: [],
       setSuggestedIngredients: (ingredients) =>
         set({ suggestedIngredients: ingredients }),
-      bottleDesign: { choice: 0, text: "" },
+      bottleDesign: { choice: "", text: "" },
       setBottleDesign: (data) =>
         set({
           bottleDesign: { choice: data.choice ?? 0, text: data.text ?? "" },
