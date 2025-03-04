@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const testimonials = [
   {
@@ -27,24 +27,36 @@ const testimonials = [
     text: "Incredible personalization and lovely aromas.",
     image: "/placeholder.svg?height=100&width=100",
   },
-]
+];
 
 export default function TestimonialCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [visibleTestimonials, setVisibleTestimonials] = useState(window.innerWidth >= 768 ? 3 : 1)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleTestimonials, setVisibleTestimonials] = useState(3);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % (testimonials.length - visibleTestimonials + 1))
-  }
+    setCurrentIndex(
+      (prevIndex) =>
+        (prevIndex + 1) % (testimonials.length - visibleTestimonials + 1)
+    );
+  };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - visibleTestimonials : prevIndex - 1))
-  }
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0
+        ? testimonials.length - visibleTestimonials
+        : prevIndex - 1
+    );
+  };
 
   return (
     <div className="relative">
       <div className="flex justify-center mb-4 md:hidden">
-        <Button variant="outline" size="icon" className="mr-2" onClick={prevSlide}>
+        <Button
+          variant="outline"
+          size="icon"
+          className="mr-2"
+          onClick={prevSlide}
+        >
           <ChevronLeft className="h-4 w-4" />
         </Button>
         <Button variant="outline" size="icon" onClick={nextSlide}>
@@ -56,12 +68,18 @@ export default function TestimonialCarousel() {
         <div
           className="flex transition-transform duration-300 ease-in-out"
           style={{
-            transform: `translateX(-${currentIndex * (100 / visibleTestimonials)}%)`,
+            transform: `translateX(-${
+              currentIndex * (100 / visibleTestimonials)
+            }%)`,
             width: `${(testimonials.length / visibleTestimonials) * 100}%`,
           }}
         >
           {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="px-4" style={{ width: `${100 / testimonials.length}%` }}>
+            <div
+              key={testimonial.id}
+              className="px-4"
+              style={{ width: `${100 / testimonials.length}%` }}
+            >
               <div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-sm">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden mb-4">
                   <Image
@@ -85,7 +103,12 @@ export default function TestimonialCarousel() {
       </div>
 
       <div className="hidden md:flex justify-center mt-6">
-        <Button variant="outline" size="icon" className="mr-2" onClick={prevSlide}>
+        <Button
+          variant="outline"
+          size="icon"
+          className="mr-2"
+          onClick={prevSlide}
+        >
           <ChevronLeft className="h-4 w-4" />
           <span className="sr-only">Previous</span>
         </Button>
@@ -95,6 +118,5 @@ export default function TestimonialCarousel() {
         </Button>
       </div>
     </div>
-  )
+  );
 }
-
