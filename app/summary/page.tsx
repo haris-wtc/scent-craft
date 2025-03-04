@@ -28,7 +28,7 @@ export default function SummaryPage() {
           Your Selection: Byredo Mixed Emotions
         </h1>
 
-        <div className="bg-white p-6 rounded-lg shadow-sm border mb-8">
+        <div className="bg-card text-card-foreground p-6 rounded-lg shadow-sm border mb-8">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="flex justify-center">
               <div className="relative w-64 h-64">
@@ -47,26 +47,30 @@ export default function SummaryPage() {
               <div className="space-y-4">
                 <div>
                   <h3 className="font-medium">Top Notes</h3>
-                  <p className="text-gray-600">
+                  <p className="text-muted-foreground">
                     Black Currant, Bergamot, Birch Woods
                   </p>
                 </div>
 
                 <div>
                   <h3 className="font-medium">Mid Notes</h3>
-                  <p className="text-gray-600">Wisteria, Papyrus, Violet</p>
+                  <p className="text-muted-foreground">
+                    Wisteria, Papyrus, Violet
+                  </p>
                 </div>
 
                 <div>
                   <h3 className="font-medium">Base Notes</h3>
-                  <p className="text-gray-600">Musk, Cedarwood, Vetiver</p>
+                  <p className="text-muted-foreground">
+                    Musk, Cedarwood, Vetiver
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-sm border mb-8">
+        <div className="bg-card text-card-foreground p-6 rounded-lg shadow-sm border mb-8">
           <h2 className="text-xl font-bold mb-4">Order Summary</h2>
 
           <div className="space-y-2">
@@ -85,7 +89,7 @@ export default function SummaryPage() {
               <span>$ 2.00</span>
             </div>
 
-            <div className="border-t pt-2 mt-2 flex justify-between font-bold">
+            <div className="border-t border-border pt-2 mt-2 flex justify-between font-bold">
               <span>Total cost</span>
               <span>$ 91.99</span>
             </div>
