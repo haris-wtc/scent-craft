@@ -6,11 +6,18 @@ import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useStore } from "@/store/useStore";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const pathname = usePathname();
   const { hasBottleDesign, hasIngredients } = useStore();
   const { theme, setTheme } = useTheme();
+  const [isClient, setIsClient] = useState(false);
+
+  // Set isClient to true after component mounts
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background">
@@ -24,7 +31,7 @@ export default function Header() {
           <Link
             href="/"
             className={`text-sm font-medium ${
-              pathname === "/" ? "text-primary" : ""
+              isClient && pathname === "/" ? "text-primary" : ""
             }`}
           >
             Home
@@ -32,16 +39,24 @@ export default function Header() {
           <Link
             href="/design"
             className={`text-sm font-medium ${
-              pathname === "/design" ? "text-primary" : ""
-            } ${!hasIngredients() ? "pointer-events-none opacity-50" : ""}`}
+              isClient && pathname === "/design" ? "text-primary" : ""
+            } ${
+              isClient && !hasIngredients()
+                ? "pointer-events-none opacity-50"
+                : ""
+            }`}
           >
             Design
           </Link>
           <Link
             href="/summary"
             className={`text-sm font-medium ${
-              pathname === "/summary" ? "text-primary" : ""
-            } ${!hasBottleDesign() ? "pointer-events-none opacity-50" : ""}`}
+              isClient && pathname === "/summary" ? "text-primary" : ""
+            } ${
+              isClient && !hasBottleDesign()
+                ? "pointer-events-none opacity-50"
+                : ""
+            }`}
           >
             Summary
           </Link>

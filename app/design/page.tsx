@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { NotesSection } from "@/components/notes-section";
 import { Button } from "@/components/ui/button";
@@ -45,6 +44,7 @@ export default function DesignPage() {
           <div className="space-y-12">
             {suggestedIngredients.map((item) => (
               <NotesSection
+                key={item.note}
                 title={item.note}
                 notes={extractNoteIngredients(item.ingredients)}
               />
